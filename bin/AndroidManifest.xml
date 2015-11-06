@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.zyq.appwidget"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="21" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver
+            android:name="com.zyq.appwidget.MyAppWidgetProvider"
+            android:label="Hello,AppWidget" >
+            <intent-filter>
+
+                <!-- widget默认的事件action -->
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" >
+                </action>
+            </intent-filter>
+            <!-- widget元数据,name是写死的，resource指的是widget的配置文件 -->
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/config" />
+        </receiver>
+
+        <service android:name="com.zyq.appwidget.TimeService" >
+        </service>
+    </application>
+
+</manifest>
